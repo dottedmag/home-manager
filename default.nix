@@ -1,11 +1,11 @@
 { pkgs ? import <nixpkgs> { } }:
 
 rec {
-  docs = with import ./doc { inherit pkgs; }; {
-    html = manual.html;
-    manPages = manPages;
-    json = options.json;
-  };
+#  docs = with import ./doc { inherit pkgs; }; {
+#    html = manual.html;
+#    manPages = manPages;
+#    json = options.json;
+#  };
 
   home-manager = pkgs.callPackage ./home-manager { path = toString ./.; };
 
