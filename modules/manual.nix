@@ -6,7 +6,7 @@ let
 
   cfg = config.manual;
 
-  docs = import ../doc { inherit lib pkgs; };
+#  docs = import ../doc { inherit lib pkgs; };
 
 in
 
@@ -51,18 +51,18 @@ in
   };
 
   config = {
-    home.packages = mkMerge [
-      (mkIf cfg.html.enable [ docs.manual.html docs.manual.htmlOpenTool ])
-      (mkIf cfg.manpages.enable [ docs.manPages ])
-      (mkIf cfg.json.enable [ docs.options.json ])
-    ];
+#    home.packages = mkMerge [
+#      (mkIf cfg.html.enable [ docs.manual.html docs.manual.htmlOpenTool ])
+#      (mkIf cfg.manpages.enable [ docs.manPages ])
+#      (mkIf cfg.json.enable [ docs.options.json ])
+#    ];
 
-    # Whether a dependency on nmd should be introduced.
-    home.extraBuilderCommands =
-      mkIf (cfg.html.enable || cfg.manpages.enable || cfg.json.enable) ''
-        mkdir $out/lib
-        ln -s ${docs.nmdSrc} $out/lib/nmd
-      '';
+#    # Whether a dependency on nmd should be introduced.
+#    home.extraBuilderCommands =
+#      mkIf (cfg.html.enable || cfg.manpages.enable || cfg.json.enable) ''
+#        mkdir $out/lib
+#        ln -s ${docs.nmdSrc} $out/lib/nmd
+#      '';
   };
 
 }
